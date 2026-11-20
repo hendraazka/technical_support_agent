@@ -1,7 +1,7 @@
 [project]
 name = "technical-support-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "Agentic technical support agent for homelab containers"
 readme = "README.md"
 authors = [
     { name = "Hendra", email = "hendraazka1@gmail.com" }
