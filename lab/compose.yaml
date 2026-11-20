@@ -1,0 +1,32 @@
+name: tsa-lab
+
+x-managed: &managed
+  labels:
+    tsa.managed: "true"
+  restart: "no"
+
+services:
+  web:
+    <<: *managed
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:18080:80"
+    mem_limit: 64m
+  app:
+    <<: *managed
+    image: python:3.12-alpine
+    command: ["python", "-m", "http.server", "8000"]
+    mem_limit: 64m
+  redis:
+    <<: *managed
+    image: redis:7-alpine
+    mem_limit: 64m
+  db:
+    <<: *managed
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: ${LAB_DB_PASSWORD:?set LAB_DB_PASSWORD in lab/.env}
+    mem_limit: 256m
+  stray:
+    image: redis:7-alpine
+    mem_limit: 32m
