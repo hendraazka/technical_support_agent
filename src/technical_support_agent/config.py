@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = "INFO"
     log_json: bool = False
     ollama_base_url: str = "http://localhost:11434"
+    docker_host: str = "tcp://127.0.0.1:12375"
 
 
 @lru_cache
